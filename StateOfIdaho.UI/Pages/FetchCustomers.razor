@@ -1,0 +1,54 @@
+﻿@page "/fetchcustomers"
+
+<PageTitle>Customers</PageTitle>
+
+@using StateOfIdaho.UI.Data
+@inject CustomerService CustomerService
+
+<h1>Customers</h1>
+
+@if (customers == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Address Line 1</th>
+                <th>Address Line 2</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Zip</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var customer in customers)
+            {
+                <tr>
+                    <td>@customer.FirstName</td>
+                    <td>@customer.LastName</td>
+                    <td>@customer.Email</td>
+                    <td>@customer.BillingAddress1</td>
+                    <td>@customer.BillingAddress2</td>
+                    <td>@customer.City</td>
+                    <td>@customer.State</td>
+                    <td>@customer.Zip</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private Customer[]? customers;
+
+    protected override async Task OnInitializedAsync()
+    {
+        customers = await CustomerService.GetCustomersAsync();
+    }
+}
