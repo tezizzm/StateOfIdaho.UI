@@ -4,7 +4,7 @@ namespace StateOfIdaho.UI.Data
 {
     public class CustomerService
     {
-        private readonly RestClientOptions options = new("https://its-invoice-00001-private:443");
+        private readonly RestClientOptions options = new("http://its-invoice-00001-private:80");
 
         public Task<Customer[]?> GetCustomersAsync()
         {
