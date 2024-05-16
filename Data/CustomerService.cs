@@ -4,7 +4,7 @@ namespace StateOfIdaho.UI.Data
 {
     public class CustomerService
     {
-        private readonly RestClientOptions options = new("http://its-invoice-00001-private:80");
+        private readonly RestClientOptions options = new("https://its-invoice-apps.tapv2-proud-quokka.tapsandbox.com");
 
         public Task<Customer[]?> GetCustomersAsync()
         {
